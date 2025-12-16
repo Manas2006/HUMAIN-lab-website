@@ -4,9 +4,9 @@ import Card from '@/components/Card'
 import { getFeaturedPublications } from '@/lib/publications'
 import { getRecentPosts } from '@/lib/blog'
 
-export default async function Home() {
-  const featuredPublications = await getFeaturedPublications(3)
-  const recentPosts = await getRecentPosts(3)
+export default function Home() {
+  const featuredPublications = getFeaturedPublications(3)
+  const recentPosts = getRecentPosts(3)
 
   return (
     <>

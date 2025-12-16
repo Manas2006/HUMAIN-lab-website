@@ -2,147 +2,229 @@
   "faculty": [
     {
       "id": "1",
-      "name": "Dr. Jane Smith",
-      "role": "Principal Investigator",
-      "title": "Associate Professor",
-      "interests": ["Human-AI Interaction", "Ethical AI", "HCI"],
-      "bio": "Dr. Smith leads research on human-centered AI systems and ethical AI development. Her work focuses on creating AI that enhances human capabilities.",
-      "email": "jane.smith@university.edu",
-      "links": {
-        "website": "https://example.com/janesmith",
-        "scholar": "https://scholar.google.com/citations?user=example",
-        "github": "https://github.com/janesmith"
-      },
-      "image": "/team/jane-smith.jpg"
-    },
-    {
-      "id": "2",
-      "name": "Dr. Michael Brown",
-      "role": "Co-Principal Investigator",
-      "title": "Assistant Professor",
-      "interests": ["Machine Learning", "AI Systems", "Deployment"],
-      "bio": "Dr. Brown specializes in machine learning systems and real-world AI deployment challenges.",
-      "email": "michael.brown@university.edu",
-      "links": {
-        "website": "https://example.com/michaelbrown",
-        "scholar": "https://scholar.google.com/citations?user=example2"
-      },
-      "image": "/team/michael-brown.jpg"
+      "name": "Leqi Liu",
+      "role": "Faculty",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/leqi-liu.jpg"
     }
   ],
   "phd": [
     {
-      "id": "3",
-      "name": "Alice Chen",
+      "id": "2",
+      "name": "Anubrata Das",
       "role": "PhD Student",
-      "title": "3rd Year PhD",
-      "interests": ["Transparency", "Explainable AI", "HCI"],
-      "bio": "Alice's research focuses on making AI systems more transparent and understandable to end users.",
-      "email": "alice.chen@university.edu",
-      "links": {
-        "website": "https://example.com/alicechen",
-        "scholar": "https://scholar.google.com/citations?user=example3",
-        "github": "https://github.com/alicechen"
-      },
-      "image": "/team/alice-chen.jpg"
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/anubrata-das.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Dori Litvak",
+      "role": "PhD Student",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/dori-litvak.jpg"
     },
     {
       "id": "4",
-      "name": "Bob Johnson",
+      "name": "Fanqi Yan",
       "role": "PhD Student",
-      "title": "2nd Year PhD",
-      "interests": ["Human-AI Collaboration", "Design", "Prototyping"],
-      "bio": "Bob explores how humans and AI can work together more effectively through better interface design.",
-      "email": "bob.johnson@university.edu",
-      "links": {
-        "scholar": "https://scholar.google.com/citations?user=example4",
-        "github": "https://github.com/bobjohnson"
-      },
-      "image": "/team/bob-johnson.jpg"
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/fanqi-yan.jpg"
     },
     {
       "id": "5",
-      "name": "Sarah Williams",
+      "name": "Fanzhi Zeng",
       "role": "PhD Student",
-      "title": "4th Year PhD",
-      "interests": ["ML for Social Good", "Healthcare AI", "Fairness"],
-      "bio": "Sarah applies machine learning to healthcare challenges while ensuring equitable and fair outcomes.",
-      "email": "sarah.williams@university.edu",
-      "links": {
-        "website": "https://example.com/sarahwilliams",
-        "scholar": "https://scholar.google.com/citations?user=example5"
-      },
-      "image": "/team/sarah-williams.jpg"
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/fanzhi-zeng.jpg"
     },
     {
       "id": "6",
-      "name": "David Lee",
+      "name": "Femi Bello",
       "role": "PhD Student",
-      "title": "1st Year PhD",
-      "interests": ["AI Systems", "Deployment", "Infrastructure"],
-      "bio": "David works on building robust AI systems that can be reliably deployed in production environments.",
-      "email": "david.lee@university.edu",
-      "links": {
-        "github": "https://github.com/davidlee"
-      },
-      "image": "/team/david-lee.jpg"
-    }
-  ],
-  "masters": [
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/femi-bello.jpg"
+    },
     {
       "id": "7",
-      "name": "Emily Davis",
-      "role": "Master's Student",
-      "title": "2nd Year MS",
-      "interests": ["UX Design", "Prototyping", "User Research"],
-      "bio": "Emily focuses on user experience design for AI-powered applications.",
-      "email": "emily.davis@university.edu",
-      "links": {
-        "website": "https://example.com/emilydavis"
-      },
-      "image": "/team/emily-davis.jpg"
+      "name": "Gati Aher",
+      "role": "PhD Student",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/gati-aher.jpg"
     },
     {
       "id": "8",
-      "name": "Chris Martinez",
-      "role": "Master's Student",
-      "title": "1st Year MS",
-      "interests": ["ML Engineering", "MLOps", "Systems"],
-      "bio": "Chris works on machine learning engineering and operationalizing AI systems.",
-      "email": "chris.martinez@university.edu",
-      "links": {
-        "github": "https://github.com/chrismartinez"
-      },
-      "image": "/team/chris-martinez.jpg"
-    }
-  ],
-  "undergrad": [
+      "name": "Haotian Zhai",
+      "role": "PhD Student",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/haotian-zhai.jpg"
+    },
     {
       "id": "9",
-      "name": "Jordan Taylor",
-      "role": "Undergraduate Researcher",
-      "title": "Senior",
-      "interests": ["AI Ethics", "Research", "Policy"],
-      "bio": "Jordan explores the intersection of AI ethics and policy, working on responsible AI governance.",
-      "email": "jordan.taylor@university.edu",
-      "image": "/team/jordan-taylor.jpg"
-    }
-  ],
-  "alumni": [
+      "name": "Jennifer Mickel",
+      "role": "PhD Student",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/jennifer-mickel.jpg"
+    },
     {
       "id": "10",
-      "name": "Alex Kim",
-      "role": "Alumni",
-      "title": "Former PhD Student (2023)",
-      "interests": ["Human-AI Interaction", "HCI"],
-      "bio": "Alex completed their PhD in 2023 and now works as a Research Scientist at a leading tech company.",
-      "email": "alex.kim@company.com",
-      "links": {
-        "website": "https://example.com/alexkim",
-        "scholar": "https://scholar.google.com/citations?user=example10"
-      },
-      "image": "/team/alex-kim.jpg"
+      "name": "Jierui Li",
+      "role": "PhD Student",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/jierui-li.jpg"
+    },
+    {
+      "id": "11",
+      "name": "Jincheng Cao",
+      "role": "PhD Student",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/jincheng-cao.jpg"
+    },
+    {
+      "id": "12",
+      "name": "minchao huang",
+      "role": "PhD Student",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/minchao-huang.jpg"
+    },
+    {
+      "id": "13",
+      "name": "Ruiyang Zhou",
+      "role": "PhD Student",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/ruiyang-zhou.jpg"
+    },
+    {
+      "id": "14",
+      "name": "Shuozhe Li",
+      "role": "PhD Student",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/shuozhe-li.jpg"
+    },
+    {
+      "id": "15",
+      "name": "Siddharth Swain",
+      "role": "PhD Student",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/siddharth-swain.jpg"
+    },
+    {
+      "id": "16",
+      "name": "Trista Cao",
+      "role": "PhD Student",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/trista-cao.jpg"
+    },
+    {
+      "id": "17",
+      "name": "Vibhhu",
+      "role": "PhD Student",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/vibhhu.jpg"
+    },
+    {
+      "id": "18",
+      "name": "Xinyu (Rachel) Li",
+      "role": "PhD Student",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/xinyu-li.jpg"
+    },
+    {
+      "id": "19",
+      "name": "Xiwen Wei",
+      "role": "PhD Student",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/xiwen-wei.jpg"
+    },
+    {
+      "id": "20",
+      "name": "Yuehan Liu",
+      "role": "PhD Student",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/yuehan-liu.jpg"
     }
-  ]
+  ],
+  "masters": [],
+  "undergrad": [
+    {
+      "id": "21",
+      "name": "Manas Pathak",
+      "role": "Undergraduate Researcher",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/manas-pathak.jpg"
+    },
+    {
+      "id": "22",
+      "name": "Caspar Chen",
+      "role": "Undergraduate Researcher",
+      "title": "filler text",
+      "interests": ["filler text"],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/caspar-chen.jpg"
+    }
+  ],
+  "alumni": []
 }
-

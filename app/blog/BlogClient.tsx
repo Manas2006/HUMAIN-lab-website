@@ -3,21 +3,29 @@
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import Card from '@/components/Card'
-import { getAllPosts, searchPosts, getUniqueTags } from '@/lib/blog'
 import type { BlogPost } from '@/lib/blog'
 
-const allPosts = getAllPosts()
-const tags = getUniqueTags()
+interface BlogClientProps {
+  initialPosts: BlogPost[]
+  initialTags: string[]
+}
 
-export default function BlogClient() {
+export default function BlogClient({ initialPosts, initialTags }: BlogClientProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedTag, setSelectedTag] = useState<string>('')
 
   const filteredPosts = useMemo(() => {
-    let filtered = allPosts
+    let filtered = initialPosts
 
     if (searchQuery) {
-      filtered = searchPosts(searchQuery)
+      const lowerQuery = searchQuery.toLowerCase()
+      filtered = filtered.filter(
+        (post) =>
+          post.title.toLowerCase().includes(lowerQuery) ||
+          post.excerpt.toLowerCase().includes(lowerQuery) ||
+          post.authors.some((author) => author.toLowerCase().includes(lowerQuery)) ||
+          post.tags?.some((tag) => tag.toLowerCase().includes(lowerQuery))
+      )
     }
 
     if (selectedTag) {
@@ -25,7 +33,7 @@ export default function BlogClient() {
     }
 
     return filtered
-  }, [searchQuery, selectedTag])
+  }, [searchQuery, selectedTag, initialPosts])
 
   return (
     <div className="container-custom py-16">
@@ -74,7 +82,7 @@ export default function BlogClient() {
           >
             All Topics
           </button>
-          {tags.map((tag) => (
+          {initialTags.map((tag) => (
             <button
               key={tag}
               onClick={() => setSelectedTag(tag)}
@@ -89,9 +97,9 @@ export default function BlogClient() {
           ))}
         </div>
 
-        {filteredPosts.length !== allPosts.length && (
+        {filteredPosts.length !== initialPosts.length && (
           <p className="text-sm text-slate-600">
-            Showing {filteredPosts.length} of {allPosts.length} posts
+            Showing {filteredPosts.length} of {initialPosts.length} posts
           </p>
         )}
       </div>
