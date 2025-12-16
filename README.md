@@ -74,58 +74,22 @@ lab website/
 
 ## ✏️ Editing Content
 
-### Team Members
+**📖 For detailed instructions, see [CONTENT_GUIDE.md](./CONTENT_GUIDE.md)**
 
-Edit `data/team.json` to add, remove, or update team members. The structure supports:
+### Quick Overview
 
-- **Faculty**: Principal investigators and professors
-- **PhD Students**: Doctoral students
-- **Masters**: Master's students
-- **Undergrad**: Undergraduate researchers
-- **Alumni**: Former lab members
+**Team Members**: Edit `data/team.json` to add, remove, or update team members organized by:
+- Faculty
+- PhD Students
+- Masters
+- Undergrad
+- Alumni
 
-Each member can have:
-- Name, role, title
-- Research interests
-- Bio
-- Email
-- Links (website, Google Scholar, GitHub)
+**Publications**: Edit `data/publications.json` to add new papers. Each entry includes title, authors, venue, year, tags, abstract, and links.
 
-### Publications
+**Blog Posts**: Create new `.mdx` files in `content/blog/` with frontmatter and Markdown content.
 
-Edit `data/publications.json` to manage publications. Each publication includes:
-
-- Title, authors, venue, year
-- Type (Conference, Journal, etc.)
-- Tags for categorization
-- Abstract
-- Links (PDF, DOI, code)
-
-### Blog Posts
-
-Blog posts are stored as MDX files in `content/blog/`. To add a new post:
-
-1. Create a new `.mdx` file (e.g., `my-new-post.mdx`)
-2. Add frontmatter at the top:
-
-```mdx
----
-title: "Your Post Title"
-publishedAt: "2024-01-15"
-authors: ["Author Name"]
-excerpt: "A brief description of the post"
-tags: ["Tag1", "Tag2"]
----
-
-# Your Post Title
-
-Your content here in Markdown format...
-```
-
-3. Write your content using Markdown
-4. The post will automatically appear on the blog page
-
-**Note**: Set `draft: true` in frontmatter to hide a post from the public site.
+See [CONTENT_GUIDE.md](./CONTENT_GUIDE.md) for complete instructions, examples, and best practices.
 
 ## 🎨 Customization
 
