@@ -18,6 +18,7 @@ export default function NewBlogPostPage() {
     tags: [] as string[],
     content: '',
     draft: false,
+    link: '',
   })
   const [authorInput, setAuthorInput] = useState('')
   const [tagInput, setTagInput] = useState('')
@@ -260,6 +261,22 @@ export default function NewBlogPostPage() {
               placeholder="A brief description that appears in the blog listing"
               className="w-full px-4 py-3 rounded-xl border border-sage-200 focus:outline-none focus:ring-2 focus:ring-primary"
             />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-2">
+              External Link (optional)
+            </label>
+            <input
+              type="url"
+              value={formData.link}
+              onChange={(e) => setFormData({ ...formData, link: e.target.value })}
+              placeholder="https://example.com/related-resource"
+              className="w-full px-4 py-3 rounded-xl border border-sage-200 focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+            <p className="text-sm text-slate-500 mt-1">
+              Add a link to a paper, project, or external resource
+            </p>
           </div>
 
           <div>

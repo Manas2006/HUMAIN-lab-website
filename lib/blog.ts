@@ -14,6 +14,7 @@ export interface BlogPost {
   coverImage?: string
   content: string
   draft?: boolean
+  link?: string
 }
 
 export function getAllPosts(): BlogPost[] {
@@ -40,6 +41,7 @@ export function getAllPosts(): BlogPost[] {
         coverImage: data.coverImage,
         content,
         draft: data.draft || false,
+        link: data.link || '',
       } as BlogPost
     })
     .filter((post) => !post.draft)
@@ -70,6 +72,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     coverImage: data.coverImage,
     content,
     draft: data.draft || false,
+    link: data.link || '',
   } as BlogPost
 }
 

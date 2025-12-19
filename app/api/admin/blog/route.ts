@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const { slug, title, publishedAt, authors, excerpt, tags, content, draft } =
+    const { slug, title, publishedAt, authors, excerpt, tags, content, draft, link } =
       await request.json()
 
     if (!slug || !title || !content) {
@@ -72,6 +72,7 @@ publishedAt: "${publishedAt || new Date().toISOString().split('T')[0]}"
 authors: ${JSON.stringify(authors || [])}
 excerpt: "${(excerpt || '').replace(/"/g, '\\"')}"
 tags: ${JSON.stringify(tags || [])}
+${link ? `link: "${link}"` : ''}
 ${draft ? 'draft: true' : ''}
 ---
 
@@ -102,7 +103,7 @@ export async function PUT(request: NextRequest) {
   }
 
   try {
-    const { slug, title, publishedAt, authors, excerpt, tags, content, draft, newSlug } =
+    const { slug, title, publishedAt, authors, excerpt, tags, content, draft, link, newSlug } =
       await request.json()
 
     if (!slug || !title || !content) {
@@ -118,6 +119,7 @@ publishedAt: "${publishedAt || new Date().toISOString().split('T')[0]}"
 authors: ${JSON.stringify(authors || [])}
 excerpt: "${(excerpt || '').replace(/"/g, '\\"')}"
 tags: ${JSON.stringify(tags || [])}
+${link ? `link: "${link}"` : ''}
 ${draft ? 'draft: true' : ''}
 ---
 
