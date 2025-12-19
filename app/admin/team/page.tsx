@@ -110,19 +110,44 @@ export default function TeamAdminPage() {
     setEditingCategory(category)
   }
 
-  const handleDeleteMember = (memberId: string, category: string) => {
+  const handleDeleteMember = async (memberId: string, category: string) => {
     if (!teamData || !confirm('Are you sure you want to delete this team member?')) return
 
-    setTeamData({
+    const updatedTeamData = {
       ...teamData,
       [category]: (teamData[category as keyof TeamData] as TeamMember[]).filter(m => m.id !== memberId),
-    })
+    }
+
+    setTeamData(updatedTeamData)
+
+    // Auto-save to GitHub
+    setIsSaving(true)
+    setMessage(null)
+
+    try {
+      const res = await fetch('/api/admin/team', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedTeamData),
+      })
+
+      if (res.ok) {
+        setMessage({ type: 'success', text: 'Team member deleted! Changes will be live after deployment (~1-2 min).' })
+      } else {
+        const error = await res.json()
+        setMessage({ type: 'error', text: error.error || 'Failed to save team data' })
+      }
+    } catch (error) {
+      setMessage({ type: 'error', text: 'Failed to save team data' })
+    } finally {
+      setIsSaving(false)
+    }
   }
 
-  const handleSaveMember = () => {
+  const handleSaveMember = async () => {
     if (!teamData || !editingMember || !editingCategory) return
 
-    const categoryMembers = teamData[editingCategory as keyof TeamData] as TeamMember[]
+    const categoryMembers = [...(teamData[editingCategory as keyof TeamData] as TeamMember[])]
     const existingIndex = categoryMembers.findIndex(m => m.id === editingMember.id)
 
     if (existingIndex >= 0) {
@@ -131,13 +156,37 @@ export default function TeamAdminPage() {
       categoryMembers.push(editingMember)
     }
 
-    setTeamData({
+    const updatedTeamData = {
       ...teamData,
       [editingCategory]: categoryMembers,
-    })
+    }
 
+    setTeamData(updatedTeamData)
     setEditingMember(null)
     setEditingCategory('')
+
+    // Auto-save to GitHub
+    setIsSaving(true)
+    setMessage(null)
+
+    try {
+      const res = await fetch('/api/admin/team', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedTeamData),
+      })
+
+      if (res.ok) {
+        setMessage({ type: 'success', text: 'Team member saved! Changes will be live after deployment (~1-2 min).' })
+      } else {
+        const error = await res.json()
+        setMessage({ type: 'error', text: error.error || 'Failed to save team data' })
+      }
+    } catch (error) {
+      setMessage({ type: 'error', text: 'Failed to save team data' })
+    } finally {
+      setIsSaving(false)
+    }
   }
 
   if (isLoading) {
