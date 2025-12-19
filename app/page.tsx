@@ -3,6 +3,7 @@ import Button from '@/components/Button'
 import Card from '@/components/Card'
 import { getFeaturedPublications } from '@/lib/publications'
 import { getRecentPosts } from '@/lib/blog'
+import content from '@/data/content.json'
 
 export default function Home() {
   const featuredPublications = getFeaturedPublications(3)
@@ -15,14 +16,13 @@ export default function Home() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h1 className="font-display text-5xl lg:text-6xl font-bold text-slate-900 leading-tight">
-              HUMAIN Lab
+              {content.home.hero.title}
             </h1>
             <p className="text-2xl text-primary font-medium">
-              Build controllable machine intelligence that serves humanity safely.
+              {content.home.hero.tagline}
             </p>
             <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
-              The HUman-centered MAchine INtelligence (HUMAIN) Lab has the mission to build 
-              controllable machine intelligence that serves humanity safely.
+              {content.home.hero.description}
             </p>
             <div className="flex flex-wrap gap-4">
               <Button href="/research" size="lg">
@@ -54,22 +54,11 @@ export default function Home() {
         <Card padding="lg">
           <div className="max-w-4xl mx-auto">
             <h2 className="font-display text-3xl font-bold text-slate-900 mb-6">
-              About the Lab
+              {content.home.about.title}
             </h2>
             <div className="prose prose-slate max-w-none space-y-4 text-slate-600 leading-relaxed">
-              <p>
-                The research in the lab is naturally interdisciplinary. In addition to traditional 
-                backbone subjects of machine learning (e.g., deep learning, statistics, optimization), 
-                we also gain inspiration from social sciences including economics and psychology about 
-                how we could model human preferences and behaviors, and develop rigorous human-subject 
-                studies to evaluate machine learning systems and algorithms.
-              </p>
-              <p>
-                We hope to develop a <strong>question-driven</strong> instead of a tool-driven research 
-                culture in the lab. Thus, our research can be theoretical or empirical, and the technical 
-                toolkits we use are diverse, ranging from statistical learning theory to sequential 
-                decision-making to causal inference to control theory.
-              </p>
+              <p>{content.home.about.paragraph1}</p>
+              <p><strong>Question-driven research:</strong> {content.home.about.paragraph2}</p>
             </div>
           </div>
         </Card>
@@ -86,7 +75,7 @@ export default function Home() {
           </p>
         </div>
         <div className="grid lg:grid-cols-3 gap-6">
-          {researchPillars.map((pillar, index) => (
+          {content.research.pillars.map((pillar, index) => (
             <Card key={pillar.title} padding="lg">
               <div className="text-4xl font-bold text-primary/20 mb-4">{index + 1}</div>
               <h3 className="font-semibold text-xl mb-3 text-slate-900">{pillar.title}</h3>
@@ -150,13 +139,10 @@ export default function Home() {
         <Card padding="lg" className="bg-sage-50 border-sage-200">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="font-display text-2xl font-bold text-slate-900 mb-4">
-              Work-Life Balance
+              {content.home.workLifeBalance.title}
             </h2>
             <p className="text-slate-600 leading-relaxed">
-              The lab values the importance of work-life balance. Given that we are in such a 
-              fast-paced field, it takes great effort to keep some time and space for ourselves 
-              outside research. To maintain a sustainable working style, we hope to keep the lab 
-              small but vibrant.
+              {content.home.workLifeBalance.description}
             </p>
           </div>
         </Card>
@@ -167,13 +153,10 @@ export default function Home() {
         <Card padding="lg">
           <div className="max-w-3xl mx-auto">
             <h2 className="font-display text-2xl font-bold text-slate-900 mb-4">
-              Prospective Students
+              {content.home.prospectiveStudents.title}
             </h2>
             <p className="text-slate-600 leading-relaxed mb-6">
-              We are looking for motivated students who share similar research interests to join 
-              the lab. If you are reaching out, please include your CV and why you are interested 
-              in joining the lab in your email. If you do not hear back, please feel free to send 
-              in a reminder.
+              {content.home.prospectiveStudents.description}
             </p>
             <Button href="/contact">Get in Touch</Button>
           </div>
@@ -238,21 +221,3 @@ export default function Home() {
     </>
   )
 }
-
-const researchPillars = [
-  {
-    title: 'Foundations of Machine Intelligence',
-    description:
-      'Understand the foundations of state-of-the-art machine intelligence. The ultimate goal is to use this understanding to build next-generation machine intelligence. For example, we study why current transformer-based LLMs are so powerful and use findings as inspiration to design next-generation LLMs that are more factual and reliable.',
-  },
-  {
-    title: 'Human-Centered Machine Learning',
-    description:
-      'Propose principled frameworks for developing human-centered machine learning. Focusing on particular ML applications that interact with humans (e.g., personalized recommender systems and decision-support systems), we study principled ways to model human preferences and behaviors and incorporate these models into the ML pipeline.',
-  },
-  {
-    title: 'Societal & Economic Impact',
-    description:
-      'Evaluate and mediate the societal and economic impacts of large-scale machine learning systems. Our focus is on systems—recommender systems and LLMs—that interact with millions of people. We develop toolkits to facilitate the implementation of public policies for these systems.',
-  },
-]

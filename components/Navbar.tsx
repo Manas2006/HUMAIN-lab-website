@@ -16,6 +16,7 @@ const publicNavLinks = [
 
 const adminNavLinks = [
   { href: '/admin', label: 'Dashboard' },
+  { href: '/admin/content', label: 'Site Content' },
   { href: '/admin/publications', label: 'Publications' },
   { href: '/admin/blog', label: 'Blog' },
   { href: '/admin/team', label: 'Team' },

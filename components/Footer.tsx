@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
+import content from '@/data/content.json'
 
 const footerLinks = {
   research: [
@@ -28,10 +29,13 @@ export default function Footer() {
   }
 
   const handleCopyEmail = async () => {
-    await navigator.clipboard.writeText('leqi.liu.ll@gmail.com')
+    await navigator.clipboard.writeText(content.footer.email)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
+
+  // Format email for display
+  const displayEmail = content.footer.email.replace('@', '[at]')
 
   return (
     <footer className="bg-white border-t border-sage-200 mt-8">
@@ -43,7 +47,7 @@ export default function Footer() {
               HUMAIN Lab
             </h3>
             <p className="text-slate-600 mb-4 max-w-md">
-              Build controllable machine intelligence that serves humanity safely.
+              {content.footer.tagline}
             </p>
             <div className="space-y-2 text-sm text-slate-600">
               <p>
@@ -53,7 +57,7 @@ export default function Footer() {
                   className="hover:text-primary cursor-pointer"
                   title="Click to copy"
                 >
-                  leqi.liu.ll[at]gmail.com
+                  {displayEmail}
                   {copied && <span className="ml-2 text-primary text-xs">(Copied!)</span>}
                 </button>
               </p>

@@ -1,6 +1,7 @@
 'use client'
 
 import teamData from '@/data/team.json'
+import content from '@/data/content.json'
 import Card from '@/components/Card'
 import { useState } from 'react'
 
@@ -145,10 +146,10 @@ export default function TeamPage() {
       <div className="bg-gradient-to-r from-primary-dark via-primary to-primary-dark text-white py-20">
         <div className="container-custom text-center">
           <h1 className="font-display text-4xl lg:text-6xl font-bold mb-4">
-            Our Team
+            {content.team.banner.title}
           </h1>
           <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Meet the researchers and collaborators driving innovation in human-centered AI.
+            {content.team.banner.description}
           </p>
         </div>
       </div>

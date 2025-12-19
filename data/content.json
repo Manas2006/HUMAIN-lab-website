@@ -1,0 +1,86 @@
+{
+  "home": {
+    "hero": {
+      "title": "HUMAIN Lab",
+      "tagline": "Build controllable machine intelligence that serves humanity safely.",
+      "description": "The HUman-centered MAchine INtelligence (HUMAIN) Lab has the mission to build controllable machine intelligence that serves humanity safely."
+    },
+    "about": {
+      "title": "About the Lab",
+      "paragraph1": "The research in the lab is naturally interdisciplinary. In addition to traditional backbone subjects of machine learning (e.g., deep learning, statistics, optimization), we also gain inspiration from social sciences including economics and psychology about how we could model human preferences and behaviors, and develop rigorous human-subject studies to evaluate machine learning systems and algorithms.",
+      "paragraph2": "We hope to develop a question-driven instead of a tool-driven research culture in the lab. Thus, our research can be theoretical or empirical, and the technical toolkits we use are diverse, ranging from statistical learning theory to sequential decision-making to causal inference to control theory."
+    },
+    "workLifeBalance": {
+      "title": "Work-Life Balance",
+      "description": "The lab values the importance of work-life balance. Given that we are in such a fast-paced field, it takes great effort to keep some time and space for ourselves outside research. To maintain a sustainable working style, we hope to keep the lab small but vibrant."
+    },
+    "prospectiveStudents": {
+      "title": "Prospective Students",
+      "description": "We are looking for motivated students who share similar research interests to join the lab. If you are reaching out, please include your CV and why you are interested in joining the lab in your email. If you do not hear back, please feel free to send in a reminder."
+    }
+  },
+  "research": {
+    "header": {
+      "title": "Research",
+      "tagline": "Build controllable machine intelligence that serves humanity safely.",
+      "description": "Our research is naturally interdisciplinary, combining machine learning with insights from economics, psychology, and rigorous human-subject studies."
+    },
+    "approach": {
+      "title": "Our Approach",
+      "paragraph1": "We develop a question-driven instead of a tool-driven research culture. Our research can be theoretical or empirical, and the technical toolkits we use are diverse, ranging from statistical learning theory to sequential decision-making to causal inference to control theory.",
+      "paragraph2": "In addition to traditional backbone subjects of machine learning (deep learning, statistics, optimization), we gain inspiration from social sciences about how to model human preferences and behaviors."
+    },
+    "pillars": [
+      {
+        "title": "Understand the Foundations of Machine Intelligence",
+        "description": "The ultimate goal is to use this understanding to build next-generation machine intelligence. For example, we study why the current transformer-based LLMs are so powerful and use the findings as inspiration to design the next-generation LLMs so that they are more factual and reliable.",
+        "highlight": "We are looking for students interested in exploring the generalization behaviors of large language models."
+      },
+      {
+        "title": "Principled Frameworks for Human-Centered Machine Learning",
+        "description": "Focusing on particular machine learning applications that interact with humans (e.g., personalized recommender systems and decision-support systems), we study principled ways to model human preferences and behaviors and incorporate these models into the machine learning pipeline.",
+        "highlight": ""
+      },
+      {
+        "title": "Evaluate and Mediate Societal & Economic Impacts",
+        "description": "Our focus is on machine learning systems—recommender systems and LLMs—that have been deployed to interact with millions of people. In addition to evaluating the impacts of these systems, we develop toolkits to facilitate the implementation of public policies (e.g., ways to perform data deletion efficiently).",
+        "highlight": ""
+      }
+    ],
+    "lookingForStudents": {
+      "title": "Looking for Students",
+      "description": "We are looking for students interested in exploring the generalization behaviors of large language models. If you share similar research interests, reach out!"
+    }
+  },
+  "contact": {
+    "header": {
+      "title": "Contact Us",
+      "description": "Get in touch with our lab. We'd love to hear from you!"
+    },
+    "prospectiveStudents": {
+      "title": "Prospective Students",
+      "description": "We are looking for motivated students who share similar research interests to join the lab. If you are reaching out, please include your CV and why you are interested in joining the lab in your email. If you do not hear back, please feel free to send a reminder."
+    },
+    "contactInfo": {
+      "title": "Get in Touch",
+      "piName": "Liu Leqi",
+      "email": "leqi.liu.ll@gmail.com",
+      "location": "Department of Computer Science\nUniversity of Texas at Austin"
+    },
+    "researchInterests": {
+      "title": "Interested in Our Research?",
+      "description": "If you're interested in exploring the generalization behaviors of large language models or human-centered machine learning, we'd love to hear from you!"
+    }
+  },
+  "team": {
+    "banner": {
+      "title": "Our Team",
+      "description": "Meet the researchers and collaborators driving innovation in human-centered AI."
+    }
+  },
+  "footer": {
+    "tagline": "Build controllable machine intelligence that serves humanity safely.",
+    "email": "leqi.liu.ll@gmail.com"
+  }
+}
+
