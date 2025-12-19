@@ -32,6 +32,18 @@
       }
     },
     {
+      "id": "21",
+      "name": "Manas Pathak",
+      "role": "Undergraduate Researcher",
+      "title": "filler text",
+      "interests": [
+        "filler text"
+      ],
+      "bio": "filler text",
+      "email": "filler text",
+      "image": "/team/manas-pathak.jpg"
+    },
+    {
       "id": "3",
       "name": "Dori Litvak",
       "role": "PhD Student",
@@ -250,18 +262,6 @@
   ],
   "masters": [],
   "undergrad": [
-    {
-      "id": "21",
-      "name": "Manas Pathak",
-      "role": "Undergraduate Researcher",
-      "title": "filler text",
-      "interests": [
-        "filler text"
-      ],
-      "bio": "filler text",
-      "email": "filler text",
-      "image": "/team/manas-pathak.jpg"
-    },
     {
       "id": "22",
       "name": "Caspar Chen",
