@@ -310,6 +310,7 @@ export default function TeamAdminPage() {
                 {editingMember.image && (
                   <div className="mt-3">
                     <p className="text-xs text-slate-500 mb-2">Preview:</p>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={editingMember.image}
                       alt="Preview"
@@ -407,6 +408,7 @@ export default function TeamAdminPage() {
                       >
                         <div className="flex items-center gap-4">
                           {member.image ? (
+                            /* eslint-disable-next-line @next/next/no-img-element */
                             <img
                               src={member.image}
                               alt={member.name}

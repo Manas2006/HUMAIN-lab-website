@@ -49,6 +49,7 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
       <div className="text-center">
         <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
           {showImage ? (
+            /* eslint-disable-next-line @next/next/no-img-element */
             <img
               src={member.image}
               alt={member.name}
