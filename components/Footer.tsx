@@ -34,7 +34,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-white border-t border-sage-200 mt-20">
+    <footer className="bg-white border-t border-sage-200 mt-8">
       <div className="container-custom py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Lab Info */}

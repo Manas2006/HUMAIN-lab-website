@@ -54,21 +54,12 @@ export default function ResearchPage() {
                   <h3 className="font-display text-xl font-bold text-slate-900 mb-3">
                     {pillar.title}
                   </h3>
-                  <p className="text-slate-600 leading-relaxed mb-4">
+                  <p className="text-slate-600 leading-relaxed">
                     {pillar.description}
                   </p>
                   {pillar.highlight && (
-                    <div className="bg-sage-50 border-l-4 border-primary p-4 rounded-r-lg">
+                    <div className="mt-4 bg-sage-50 border-l-4 border-primary p-4 rounded-r-lg">
                       <p className="text-slate-700 text-sm">{pillar.highlight}</p>
-                    </div>
-                  )}
-                  {pillar.publication && (
-                    <div className="mt-4 p-4 bg-white border border-sage-200 rounded-xl">
-                      <p className="text-xs text-slate-500 uppercase tracking-wide mb-1">
-                        Recent Publication
-                      </p>
-                      <p className="font-semibold text-slate-900 mb-1">{pillar.publication.title}</p>
-                      <p className="text-sm text-slate-600">{pillar.publication.description}</p>
                     </div>
                   )}
                 </div>
@@ -109,20 +100,10 @@ const researchPillars = [
     title: 'Principled Frameworks for Human-Centered Machine Learning',
     description:
       'Focusing on particular machine learning applications that interact with humans (e.g., personalized recommender systems and decision-support systems), we study principled ways to model human preferences and behaviors and incorporate these models into the machine learning pipeline.',
-    publication: {
-      title: 'Personalized Language Modeling from Personalized Human Feedback',
-      description:
-        'We develop a personalized RLHF framework for fine-tuning personalized language models attuned to a diverse set of human preferences.',
-    },
   },
   {
     title: 'Evaluate and Mediate Societal & Economic Impacts',
     description:
       'Our focus is on machine learning systems—recommender systems and LLMs—that have been deployed to interact with millions of people. In addition to evaluating the impacts of these systems, we develop toolkits to facilitate the implementation of public policies (e.g., ways to perform data deletion efficiently).',
-    publication: {
-      title: 'Recommender Systems as Dynamical Systems: Interactions with Viewers and Creators',
-      description:
-        'In societal domains where AI interacts with users, we argue that formal interaction models—mathematical models that formalize how AI and users influence each other—can enhance AI design and evaluation practices to achieve a positive societal impact.',
-    },
   },
 ]
