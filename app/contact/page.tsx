@@ -45,6 +45,19 @@ export default function ContactPage() {
         </p>
       </div>
 
+      {/* Prospective Students Notice */}
+      <Card padding="lg" className="max-w-3xl mx-auto mb-8 bg-sage-50 border-sage-200">
+        <h2 className="font-display text-xl font-bold text-slate-900 mb-3">
+          Prospective Students
+        </h2>
+        <p className="text-slate-600 leading-relaxed">
+          We are looking for motivated students who share similar research interests to join the lab. 
+          If you are reaching out, please include <strong>your CV</strong> and <strong>why you are 
+          interested in joining the lab</strong> in your email. If you do not hear back, please feel 
+          free to send a reminder.
+        </p>
+      </Card>
+
       <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
         {/* Contact Form */}
         <Card padding="lg">
@@ -118,6 +131,10 @@ export default function ContactPage() {
             </h2>
             <div className="space-y-4">
               <div>
+                <h3 className="font-semibold text-slate-900 mb-2">Principal Investigator</h3>
+                <p className="text-slate-600">Liu Leqi</p>
+              </div>
+              <div>
                 <h3 className="font-semibold text-slate-900 mb-2">Email</h3>
                 <a
                   href="mailto:contact@humainlab.edu"
@@ -127,22 +144,20 @@ export default function ContactPage() {
                 </a>
               </div>
               <div>
-                <h3 className="font-semibold text-slate-900 mb-2">Address</h3>
+                <h3 className="font-semibold text-slate-900 mb-2">Location</h3>
                 <p className="text-slate-600">
                   Department of Computer Science<br />
-                  University Name<br />
-                  123 University Avenue<br />
-                  City, State 12345
+                  University of Texas at Austin
                 </p>
               </div>
             </div>
           </Card>
 
-          <Card padding="lg">
-            <h3 className="font-semibold text-slate-900 mb-4">Office Hours</h3>
-            <p className="text-slate-600 text-sm">
-              Monday - Friday: 9:00 AM - 5:00 PM<br />
-              By appointment only
+          <Card padding="lg" className="bg-primary text-white">
+            <h3 className="font-semibold mb-3">Research Interests?</h3>
+            <p className="text-white/90 text-sm leading-relaxed">
+              If you're interested in exploring the generalization behaviors of large language 
+              models or human-centered machine learning, we'd love to hear from you!
             </p>
           </Card>
         </div>
@@ -150,4 +165,3 @@ export default function ContactPage() {
     </div>
   )
 }
-
