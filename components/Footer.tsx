@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const footerLinks = {
   research: [
@@ -15,6 +18,13 @@ const footerLinks = {
 }
 
 export default function Footer() {
+  const pathname = usePathname()
+  
+  // Don't show footer on admin pages
+  if (pathname?.startsWith('/admin')) {
+    return null
+  }
+
   return (
     <footer className="bg-white border-t border-sage-200 mt-20">
       <div className="container-custom py-12">
@@ -89,4 +99,3 @@ export default function Footer() {
     </footer>
   )
 }
-

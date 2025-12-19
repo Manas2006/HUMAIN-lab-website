@@ -1,6 +1,8 @@
+'use client'
+
 import teamData from '@/data/team.json'
 import Card from '@/components/Card'
-import Image from 'next/image'
+import { useState } from 'react'
 
 interface TeamMember {
   id: string
@@ -21,32 +23,54 @@ interface TeamMember {
 const teamGroups = [
   { key: 'faculty', title: 'Faculty', members: teamData.faculty as TeamMember[] },
   { key: 'phd', title: 'PhD Students', members: teamData.phd as TeamMember[] },
-  { key: 'masters', title: 'Master\'s Students', members: teamData.masters as TeamMember[] },
+  { key: 'masters', title: "Master's Students", members: teamData.masters as TeamMember[] },
   { key: 'undergrad', title: 'Undergraduate Researchers', members: teamData.undergrad as TeamMember[] },
   { key: 'alumni', title: 'Alumni', members: teamData.alumni as TeamMember[] },
 ]
 
 function TeamMemberCard({ member }: { member: TeamMember }) {
+  const [imageError, setImageError] = useState(false)
+  
   const initials = member.name
     .split(' ')
     .map((n) => n[0])
     .join('')
     .toUpperCase()
 
+  const showImage = member.image && !imageError
+
+  // Filter out placeholder text
+  const bio = member.bio && member.bio !== 'filler text' ? member.bio : ''
+  const title = member.title && member.title !== 'filler text' ? member.title : ''
+  const interests = member.interests.filter(i => i !== 'filler text')
+
   return (
     <Card>
       <div className="text-center">
-        <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white text-3xl font-bold">
-          {initials}
+        <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
+          {showImage ? (
+            <img
+              src={member.image}
+              alt={member.name}
+              className="w-full h-full object-cover"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white text-3xl font-bold">
+              {initials}
+            </div>
+          )}
         </div>
         <h3 className="font-semibold text-xl mb-1 text-slate-900">{member.name}</h3>
-        {member.title && (
-          <p className="text-sm text-primary font-medium mb-2">{member.title}</p>
+        {title && (
+          <p className="text-sm text-primary font-medium mb-2">{title}</p>
         )}
-        <p className="text-sm text-slate-600 mb-4">{member.bio}</p>
-        {member.interests.length > 0 && (
+        {bio && (
+          <p className="text-sm text-slate-600 mb-4">{bio}</p>
+        )}
+        {interests.length > 0 && (
           <div className="flex flex-wrap justify-center gap-2 mb-4">
-            {member.interests.map((interest) => (
+            {interests.map((interest) => (
               <span
                 key={interest}
                 className="text-xs text-slate-500 bg-sage-50 px-2 py-1 rounded"
@@ -57,13 +81,15 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
           </div>
         )}
         <div className="flex justify-center gap-4 text-sm">
-          <a
-            href={`mailto:${member.email}`}
-            className="text-primary hover:text-primary-dark"
-            aria-label={`Email ${member.name}`}
-          >
-            Email
-          </a>
+          {member.email && member.email !== 'filler text' && (
+            <a
+              href={`mailto:${member.email}`}
+              className="text-primary hover:text-primary-dark"
+              aria-label={`Email ${member.name}`}
+            >
+              Email
+            </a>
+          )}
           {member.links?.website && (
             <a
               href={member.links.website}
@@ -132,4 +158,3 @@ export default function TeamPage() {
     </div>
   )
 }
-

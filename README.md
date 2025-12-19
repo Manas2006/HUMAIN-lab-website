@@ -1,236 +1,151 @@
 # HUMAIN Lab Website
 
-A production-ready lab website built with Next.js 14+, TypeScript, and Tailwind CSS. Features a modern, accessible design with a soft sage green theme, blog functionality, and easy content management.
+A modern lab website built with Next.js 14, TypeScript, and Tailwind CSS featuring a secure admin panel for content management.
 
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Node.js 18+ and npm/yarn/pnpm
-- Git
-
-### Installation
-
-1. **Clone the repository** (or navigate to the project directory)
+## Quick Start
 
 ```bash
-cd "lab website"
-```
-
-2. **Install dependencies**
-
-```bash
+# Install dependencies
 npm install
-# or
-yarn install
-# or
-pnpm install
+
+# Run development server
+npm run dev
+
+# Open http://localhost:3000
 ```
 
-3. **Run the development server**
+## Features
+
+- **Modern Design**: Responsive layout with sage green theme
+- **Admin Panel**: Secure content management at `/admin`
+- **Publications**: Searchable/filterable publication listings
+- **Blog**: MDX-powered blog with RSS feed
+- **Team Page**: Organized by role with profile pictures
+
+## Project Structure
+
+```
+├── app/                  # Next.js pages
+│   ├── admin/           # Admin panel (protected)
+│   ├── api/             # API routes
+│   ├── blog/            # Blog pages
+│   ├── publications/    # Publications page
+│   ├── team/            # Team page
+│   └── ...
+├── components/          # React components
+├── content/blog/        # Blog posts (MDX)
+├── data/                # JSON data files
+│   ├── publications.json
+│   └── team.json
+├── lib/                 # Utilities
+└── public/              # Static assets
+```
+
+## Content Management
+
+### Option 1: Admin Panel (Recommended)
+
+1. Go to `/admin/login`
+2. Log in with admin credentials
+3. Manage publications, blog posts, and team members via the web UI
+
+### Option 2: Direct File Editing
+
+- **Team**: Edit `data/team.json`
+- **Publications**: Edit `data/publications.json`
+- **Blog**: Add `.mdx` files to `content/blog/`
+
+## Admin Setup
+
+### 1. Create Environment Variables
+
+Create `.env.local`:
+
+```env
+# Authentication
+NEXTAUTH_SECRET=your-random-secret-key
+NEXTAUTH_URL=http://localhost:3000
+
+# Admin credentials
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=your-secure-password
+
+# GitHub API (required for Vercel deployment)
+GITHUB_TOKEN=ghp_your_token
+GITHUB_OWNER=your-username
+GITHUB_REPO=your-repo
+GITHUB_BRANCH=main
+```
+
+### 2. Generate Password Hash (Production)
+
+For production, use a hashed password:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+node -e "require('bcryptjs').hash('your-password',10).then(h=>console.log(h))"
 ```
 
-4. **Open your browser**
-
-Navigate to [http://localhost:3000](http://localhost:3000)
-
-## 📁 Project Structure
-
-```
-lab website/
-├── app/                    # Next.js App Router pages
-│   ├── layout.tsx          # Root layout with fonts and metadata
-│   ├── page.tsx            # Home page
-│   ├── research/           # Research page
-│   ├── publications/       # Publications page
-│   ├── team/               # Team page
-│   ├── blog/               # Blog listing and posts
-│   └── contact/            # Contact page
-├── components/             # Reusable React components
-│   ├── Navbar.tsx          # Navigation bar
-│   ├── Footer.tsx          # Footer
-│   ├── Button.tsx          # Button component
-│   ├── Card.tsx             # Card component
-│   └── MDXContent.tsx      # MDX content renderer
-├── content/                # Content files
-│   └── blog/               # Blog posts (MDX files)
-├── data/                   # JSON data files
-│   ├── publications.json   # Publications data
-│   └── team.json          # Team member data
-├── lib/                    # Utility functions
-│   ├── utils.ts           # General utilities
-│   ├── publications.ts    # Publication helpers
-│   └── blog.ts            # Blog helpers
-├── public/                 # Static assets
-└── ...config files
+Add to `.env.local`:
+```env
+ADMIN_PASSWORD_HASH=$2a$10$...your-hash...
 ```
 
-## ✏️ Editing Content
+### 3. GitHub Token (For Vercel)
 
-**📖 For detailed instructions, see [CONTENT_GUIDE.md](./CONTENT_GUIDE.md)**
+The admin panel commits changes to GitHub when deployed on Vercel:
 
-### Quick Overview
+1. Go to GitHub → Settings → Developer settings → Personal access tokens
+2. Generate a token with `repo` scope
+3. Add as `GITHUB_TOKEN` in your environment
 
-**Team Members**: Edit `data/team.json` to add, remove, or update team members organized by:
-- Faculty
-- PhD Students
-- Masters
-- Undergrad
-- Alumni
-
-**Publications**: Edit `data/publications.json` to add new papers. Each entry includes title, authors, venue, year, tags, abstract, and links.
-
-**Blog Posts**: Create new `.mdx` files in `content/blog/` with frontmatter and Markdown content.
-
-See [CONTENT_GUIDE.md](./CONTENT_GUIDE.md) for complete instructions, examples, and best practices.
-
-## 🎨 Customization
-
-### Colors
-
-Edit `tailwind.config.ts` to customize the color scheme. The current theme uses:
-
-- **Primary**: Sage green (`#88B08B`)
-- **Sage palette**: Various shades of green
-- **Background**: Soft gradient from `rgb(203, 218, 201)` to `rgb(206, 221, 201)`
-
-### Fonts
-
-Fonts are configured in `app/layout.tsx`:
-- **Body**: Inter (sans-serif)
-- **Display**: Plus Jakarta Sans (headings)
-
-### Styling
-
-Global styles are in `app/globals.css`. Component styles use Tailwind utility classes.
-
-## 🚢 Deployment
+## Deployment
 
 ### Vercel (Recommended)
 
-1. Push your code to GitHub
-2. Import your repository in [Vercel](https://vercel.com)
-3. Vercel will automatically detect Next.js and deploy
-4. Your site will be live at `your-project.vercel.app`
+1. Push to GitHub
+2. Import in [Vercel](https://vercel.com)
+3. Add environment variables in Vercel dashboard:
+   - `NEXTAUTH_SECRET`
+   - `NEXTAUTH_URL` (your production URL)
+   - `ADMIN_USERNAME`
+   - `ADMIN_PASSWORD_HASH`
+   - `GITHUB_TOKEN`
+   - `GITHUB_OWNER`
+   - `GITHUB_REPO`
+   - `GITHUB_BRANCH`
 
-**Environment Variables** (optional):
-- `NEXT_PUBLIC_SITE_URL`: Your site URL (for RSS feed)
+### How It Works on Vercel
 
-### Netlify
+- Admin changes are committed to GitHub via API
+- Vercel auto-deploys from GitHub (~1-2 min delay)
+- Changes persist permanently in your repo
 
-1. Push your code to GitHub
-2. In Netlify, click "New site from Git"
-3. Select your repository
-4. Build settings:
-   - Build command: `npm run build`
-   - Publish directory: `.next`
-5. Deploy!
+## Customization
 
-### Other Platforms
+### Colors
 
-The site can be deployed to any platform that supports Next.js:
-- AWS Amplify
-- Railway
-- DigitalOcean App Platform
-- Self-hosted with Node.js
+Edit `tailwind.config.ts`:
+- Primary: Sage green (`#88B08B`)
+- Background: Gradient from `rgb(203, 218, 201)` to `rgb(206, 221, 201)`
 
-## 📧 Contact Form
+### Fonts
 
-The contact form on `/contact` currently uses a placeholder submission handler. To enable real email functionality:
+Configured in `app/layout.tsx`:
+- Body: Inter
+- Headings: Plus Jakarta Sans
 
-### Option 1: API Route (Recommended)
+## Development
 
-1. Create `app/api/contact/route.ts`
-2. Integrate with an email service (Resend, SendGrid, etc.)
-3. Update the form submission in `app/contact/page.tsx`
-
-Example with Resend:
-
-```typescript
-// app/api/contact/route.ts
-import { Resend } from 'resend'
-
-const resend = new Resend(process.env.RESEND_API_KEY)
-
-export async function POST(request: Request) {
-  const { name, email, message } = await request.json()
-  
-  await resend.emails.send({
-    from: 'contact@yourdomain.com',
-    to: 'your-email@example.com',
-    subject: `Contact form: ${name}`,
-    html: `<p>From: ${email}</p><p>${message}</p>`,
-  })
-  
-  return Response.json({ success: true })
-}
+```bash
+npm run dev      # Development server
+npm run build    # Production build
+npm run lint     # Lint code
 ```
 
-### Option 2: EmailJS
+## License
 
-Use EmailJS client-side (see [EmailJS docs](https://www.emailjs.com/docs/))
-
-## 🔍 Features
-
-- ✅ Responsive design (mobile, tablet, desktop)
-- ✅ Accessible (WCAG compliant)
-- ✅ SEO optimized
-- ✅ RSS feed (`/feed.xml`)
-- ✅ Blog with search and filtering
-- ✅ Publications with search and filters
-- ✅ Team page with categorized members
-- ✅ Contact form
-- ✅ Fast performance (Next.js optimizations)
-- ✅ Type-safe (TypeScript)
-
-## 🛠️ Development
-
-### Code Quality
-
-- **Linting**: `npm run lint`
-- **Formatting**: `npm run format`
-- **Type checking**: Built into Next.js build
-
-### Adding New Pages
-
-1. Create a new directory in `app/` (e.g., `app/about/`)
-2. Add `page.tsx` with your page content
-3. Add the route to `components/Navbar.tsx` if needed
-
-### Adding New Components
-
-1. Create component file in `components/`
-2. Use TypeScript for type safety
-3. Follow existing component patterns
-4. Use Tailwind for styling
-
-## 📝 License
-
-This project is open source and available for use by research labs and academic institutions.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-## 📞 Support
-
-For questions or issues:
-- Open an issue on GitHub
-- Email: contact@humainlab.edu
+Open source for research labs and academic institutions.
 
 ---
 
 Built with ❤️ by HUMAIN Lab
-
