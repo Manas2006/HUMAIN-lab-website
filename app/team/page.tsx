@@ -20,12 +20,13 @@ interface TeamMember {
   image?: string
 }
 
-const teamGroups = [
-  { key: 'faculty', title: 'Faculty', members: teamData.faculty as TeamMember[] },
-  { key: 'phd', title: 'PhD Students', members: teamData.phd as TeamMember[] },
-  { key: 'masters', title: "Master's Students", members: teamData.masters as TeamMember[] },
-  { key: 'undergrad', title: 'Undergraduate Researchers', members: teamData.undergrad as TeamMember[] },
-  { key: 'alumni', title: 'Alumni', members: teamData.alumni as TeamMember[] },
+// Combine all team members into one list
+const allMembers: TeamMember[] = [
+  ...(teamData.faculty as TeamMember[]),
+  ...(teamData.phd as TeamMember[]),
+  ...(teamData.masters as TeamMember[]),
+  ...(teamData.undergrad as TeamMember[]),
+  ...(teamData.alumni as TeamMember[]),
 ]
 
 function TeamMemberCard({ member }: { member: TeamMember }) {
@@ -129,32 +130,30 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
 
 export default function TeamPage() {
   return (
-    <div className="container-custom py-16">
-      <div className="max-w-3xl mx-auto mb-16 text-center">
-        <h1 className="font-display text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-          Our Team
-        </h1>
-        <p className="text-lg text-slate-600 leading-relaxed">
-          Meet the researchers and collaborators driving innovation in human-centered AI.
-        </p>
+    <div>
+      {/* Banner */}
+      <div className="bg-gradient-to-r from-primary-dark via-primary to-primary-dark text-white py-20">
+        <div className="container-custom text-center">
+          <h1 className="font-display text-4xl lg:text-6xl font-bold mb-4">
+            Our Team
+          </h1>
+          <p className="text-xl text-white/90 max-w-2xl mx-auto">
+            Meet the researchers and collaborators driving innovation in human-centered AI.
+          </p>
+        </div>
       </div>
 
-      <div className="space-y-16">
-        {teamGroups.map((group) => {
-          if (group.members.length === 0) return null
-          return (
-            <div key={group.key}>
-              <h2 className="font-display text-3xl font-bold text-slate-900 mb-8">
-                {group.title}
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {group.members.map((member) => (
-                  <TeamMemberCard key={member.id} member={member} />
-                ))}
-              </div>
-            </div>
-          )
-        })}
+      {/* Team Grid */}
+      <div className="container-custom py-16">
+        {allMembers.length === 0 ? (
+          <p className="text-center text-slate-500">No team members yet.</p>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {allMembers.map((member) => (
+              <TeamMemberCard key={member.id} member={member} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )
