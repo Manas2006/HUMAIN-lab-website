@@ -5,7 +5,9 @@
       "name": "Leqi Liu",
       "role": "Faculty",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/leqi-liu.jpg"
@@ -16,18 +18,27 @@
       "id": "2",
       "name": "Anubrata Das",
       "role": "PhD Student",
-      "title": "filler text",
-      "interests": ["filler text"],
-      "bio": "filler text",
-      "email": "filler text",
-      "image": "/team/anubrata-das.jpg"
+      "title": "Postdoctoral Scholar",
+      "interests": [
+        "filler text"
+      ],
+      "bio": "I am interested in the intersection of Machine Learning and Human-Computer Interaction, specifically focused on developing methods that help human experts understand and maintain appropriate oversight over AI tools. More about my research here: https://anubrata.github.io/ ",
+      "email": "anubrata.das[at]utexas.edu",
+      "image": "/team/anubrata-das-1766123948880.jpeg",
+      "links": {
+        "website": "https://anubrata.github.io/ ",
+        "scholar": "https://scholar.google.com/citations?hl=en&user=zVcu-J4AAAAJ&view_op=list_works&sortby=pubdate",
+        "github": "https://github.com/anubrata"
+      }
     },
     {
       "id": "3",
       "name": "Dori Litvak",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/dori-litvak.jpg"
@@ -37,7 +48,9 @@
       "name": "Fanqi Yan",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/fanqi-yan.jpg"
@@ -47,7 +60,9 @@
       "name": "Fanzhi Zeng",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/fanzhi-zeng.jpg"
@@ -57,7 +72,9 @@
       "name": "Femi Bello",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/femi-bello.jpg"
@@ -67,7 +84,9 @@
       "name": "Gati Aher",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/gati-aher.jpg"
@@ -77,7 +96,9 @@
       "name": "Haotian Zhai",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/haotian-zhai.jpg"
@@ -87,7 +108,9 @@
       "name": "Jennifer Mickel",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/jennifer-mickel.jpg"
@@ -97,7 +120,9 @@
       "name": "Jierui Li",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/jierui-li.jpg"
@@ -107,7 +132,9 @@
       "name": "Jincheng Cao",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/jincheng-cao.jpg"
@@ -117,7 +144,9 @@
       "name": "minchao huang",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/minchao-huang.jpg"
@@ -127,7 +156,9 @@
       "name": "Ruiyang Zhou",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/ruiyang-zhou.jpg"
@@ -137,7 +168,9 @@
       "name": "Shuozhe Li",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/shuozhe-li.jpg"
@@ -147,7 +180,9 @@
       "name": "Siddharth Swain",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/siddharth-swain.jpg"
@@ -157,7 +192,9 @@
       "name": "Trista Cao",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/trista-cao.jpg"
@@ -167,7 +204,9 @@
       "name": "Vibhhu",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/vibhhu.jpg"
@@ -177,7 +216,9 @@
       "name": "Xinyu (Rachel) Li",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/xinyu-li.jpg"
@@ -187,7 +228,9 @@
       "name": "Xiwen Wei",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/xiwen-wei.jpg"
@@ -197,7 +240,9 @@
       "name": "Yuehan Liu",
       "role": "PhD Student",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/yuehan-liu.jpg"
@@ -210,7 +255,9 @@
       "name": "Manas Pathak",
       "role": "Undergraduate Researcher",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/manas-pathak.jpg"
@@ -220,7 +267,9 @@
       "name": "Caspar Chen",
       "role": "Undergraduate Researcher",
       "title": "filler text",
-      "interests": ["filler text"],
+      "interests": [
+        "filler text"
+      ],
       "bio": "filler text",
       "email": "filler text",
       "image": "/team/caspar-chen.jpg"
