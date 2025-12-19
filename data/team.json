@@ -107,13 +107,11 @@
       "id": "8",
       "name": "Haotian Zhai",
       "role": "PhD Student",
-      "title": "filler text",
-      "interests": [
-        "filler text"
-      ],
-      "bio": "filler text",
-      "email": "filler text",
-      "image": "/team/haotian-zhai.jpg"
+      "title": "3rd Year PhD Student in ORIE",
+      "interests": [],
+      "bio": "I’m interested in reliable and efficient agentic systems and combinatorial optimization, with a focus on understanding and controlling the behavior of LLM based research agents and formal reasoning for decision-making. ",
+      "email": "haotian.zhai[at]utexas.edu",
+      "image": "/team/haotian-zhai-1766125523657.jpeg"
     },
     {
       "id": "9",
