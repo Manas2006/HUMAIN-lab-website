@@ -35,13 +35,17 @@
       "id": "21",
       "name": "Manas Pathak",
       "role": "Undergraduate Researcher",
-      "title": "filler text",
+      "title": "Undergraduate Researcher",
       "interests": [
         "filler text"
       ],
-      "bio": "filler text",
-      "email": "filler text",
-      "image": "/team/manas-pathak.jpg"
+      "bio": "I am interested in machine learning systems and reasoning focused language models, with an emphasis on evaluating and improving chain of thought quality, confidence calibration, and reliability in modern LLMs. My work spans reasoning evaluation metrics, open source model benchmarking, and applied ML systems, with the goal of building interpretable and trustworthy AI tools for real world deployment.",
+      "email": "manaspathak[at]utexas.edu",
+      "image": "/team/manas-pathak.jpg",
+      "links": {
+        "github": "https://github.com/Manas2006",
+        "website": ""
+      }
     },
     {
       "id": "3",
