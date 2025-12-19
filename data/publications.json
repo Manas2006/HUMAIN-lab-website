@@ -1,20 +1,5 @@
 [
   {
-    "title": "test",
-    "authors": [
-      "Manas"
-    ],
-    "venue": "ICML",
-    "year": "2025",
-    "type": "Journal",
-    "tags": [
-      "ICML"
-    ],
-    "abstract": "test",
-    "links": {},
-    "id": "1"
-  },
-  {
     "title": "extra test",
     "authors": [],
     "venue": "extra test",
