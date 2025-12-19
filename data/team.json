@@ -39,12 +39,13 @@
       "interests": [
         "filler text"
       ],
-      "bio": "I am interested in machine learning systems and reasoning focused language models, with an emphasis on evaluating and improving chain of thought quality, confidence calibration, and reliability in modern LLMs. My work spans reasoning evaluation metrics, open source model benchmarking, and applied ML systems, with the goal of building interpretable and trustworthy AI tools for real world deployment.",
+      "bio": "I am interested in evaluating chain of thought reasoning in large language models and in deep reinforcement learning, with a focus on reliability, confidence calibration, and interpretability. My work aims to develop methods that help researchers and practitioners better understand, evaluate, and maintain trustworthy machine learning systems.",
       "email": "manaspathak[at]utexas.edu",
-      "image": "/team/manas-pathak.jpg",
+      "image": "/team/manas-pathak-1766128866126.jpeg",
       "links": {
         "github": "https://github.com/Manas2006",
-        "website": ""
+        "website": "",
+        "linkedin": "https://www.linkedin.com/in/manasp123/"
       }
     },
     {
