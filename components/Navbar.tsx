@@ -99,7 +99,7 @@ export default function Navbar() {
                   Logout
                 </Button>
               </>
-            ) : isAuthenticated ? (
+            ) : (
               <>
                 <Link href="/admin">
                   <Button size="sm" variant="outline">Admin Panel</Button>
@@ -108,10 +108,6 @@ export default function Navbar() {
                   <Button size="sm">Contact</Button>
                 </Link>
               </>
-            ) : (
-              <Link href="/contact">
-                <Button size="sm">Contact</Button>
-              </Link>
             )}
           </div>
 
@@ -170,7 +166,7 @@ export default function Navbar() {
                     Logout
                   </Button>
                 </>
-              ) : isAuthenticated ? (
+              ) : (
                 <>
                   <Link href="/admin" onClick={() => setIsOpen(false)}>
                     <Button size="sm" variant="outline" className="w-full">Admin Panel</Button>
@@ -179,10 +175,6 @@ export default function Navbar() {
                     <Button size="sm" className="w-full">Contact</Button>
                   </Link>
                 </>
-              ) : (
-                <Link href="/contact" onClick={() => setIsOpen(false)}>
-                  <Button size="sm" className="w-full">Contact</Button>
-                </Link>
               )}
             </div>
           </div>
