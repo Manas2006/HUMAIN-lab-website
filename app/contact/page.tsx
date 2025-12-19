@@ -71,14 +71,6 @@ export default function ContactPage() {
             </div>
           </div>
         </Card>
-
-        {/* Research Interests */}
-        <Card padding="lg" className="bg-primary text-white">
-          <h3 className="font-semibold text-xl mb-3">{content.contact.researchInterests.title}</h3>
-          <p className="text-white/90 leading-relaxed">
-            {content.contact.researchInterests.description}
-          </p>
-        </Card>
       </div>
     </div>
   )

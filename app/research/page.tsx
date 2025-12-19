@@ -1,5 +1,4 @@
 import Card from '@/components/Card'
-import Button from '@/components/Button'
 import content from '@/data/content.json'
 
 export default function ResearchPage() {
@@ -34,7 +33,7 @@ export default function ResearchPage() {
       </Card>
 
       {/* Research Pillars */}
-      <div className="mb-16">
+      <div>
         <h2 className="font-display text-3xl font-bold text-slate-900 mb-8 text-center">
           Research Pillars
         </h2>
@@ -63,21 +62,6 @@ export default function ResearchPage() {
           ))}
         </div>
       </div>
-
-      {/* Looking for Students */}
-      <Card padding="lg" className="bg-primary text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="font-display text-2xl font-bold mb-4">
-            {content.research.lookingForStudents.title}
-          </h2>
-          <p className="text-white/90 leading-relaxed mb-6">
-            {content.research.lookingForStudents.description}
-          </p>
-          <Button href="/contact" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-            Get in Touch
-          </Button>
-        </div>
-      </Card>
     </div>
   )
 }
