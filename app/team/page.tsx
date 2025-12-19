@@ -17,6 +17,7 @@ interface TeamMember {
     website?: string
     scholar?: string
     github?: string
+    linkedin?: string
   }
   image?: string
 }
@@ -131,6 +132,16 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
               className="text-primary hover:text-primary-dark"
             >
               GitHub
+            </a>
+          )}
+          {member.links?.linkedin && (
+            <a
+              href={member.links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary-dark"
+            >
+              LinkedIn
             </a>
           )}
         </div>

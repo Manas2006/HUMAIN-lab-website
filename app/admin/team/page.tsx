@@ -17,6 +17,7 @@ interface TeamMember {
     website?: string
     scholar?: string
     github?: string
+    linkedin?: string
   }
 }
 
@@ -368,7 +369,7 @@ export default function TeamAdminPage() {
                 )}
               </div>
 
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-2">Website</label>
                   <input
@@ -402,6 +403,19 @@ export default function TeamAdminPage() {
                       ...editingMember,
                       links: { ...editingMember.links, github: e.target.value },
                     })}
+                    className="w-full px-4 py-3 rounded-xl border border-sage-200 focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">LinkedIn</label>
+                  <input
+                    type="url"
+                    value={editingMember.links?.linkedin || ''}
+                    onChange={(e) => setEditingMember({
+                      ...editingMember,
+                      links: { ...editingMember.links, linkedin: e.target.value },
+                    })}
+                    placeholder="https://linkedin.com/in/username"
                     className="w-full px-4 py-3 rounded-xl border border-sage-200 focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
