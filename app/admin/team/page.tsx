@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import Card from '@/components/Card'
 import Button from '@/components/Button'
 
@@ -29,21 +28,11 @@ interface TeamData {
   alumni: TeamMember[]
 }
 
-const categories = [
-  { key: 'faculty', label: 'Faculty' },
-  { key: 'phd', label: 'PhD Students' },
-  { key: 'masters', label: "Master's Students" },
-  { key: 'undergrad', label: 'Undergraduate Researchers' },
-  { key: 'alumni', label: 'Alumni' },
-]
-
 export default function TeamAdminPage() {
-  const router = useRouter()
   const [teamData, setTeamData] = useState<TeamData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isSaving, setIsSaving] = useState(false)
   const [editingMember, setEditingMember] = useState<TeamMember | null>(null)
-  const [editingCategory, setEditingCategory] = useState<string>('')
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null)
   const [isUploadingImage, setIsUploadingImage] = useState(false)
 
@@ -65,57 +54,56 @@ export default function TeamAdminPage() {
     }
   }
 
-  const handleSave = async () => {
-    if (!teamData) return
-
-    setIsSaving(true)
-    setMessage(null)
-
-    try {
-      const res = await fetch('/api/admin/team', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(teamData),
-      })
-
-      if (res.ok) {
-        setMessage({ type: 'success', text: 'Team data saved successfully! Changes will be live after deployment (~1-2 min).' })
-      } else {
-        const error = await res.json()
-        setMessage({ type: 'error', text: error.error || 'Failed to save team data' })
-      }
-    } catch (error) {
-      setMessage({ type: 'error', text: 'Failed to save team data' })
-    } finally {
-      setIsSaving(false)
-    }
+  // Get all members as a flat list
+  const getAllMembers = (): TeamMember[] => {
+    if (!teamData) return []
+    return [
+      ...teamData.faculty,
+      ...teamData.phd,
+      ...teamData.masters,
+      ...teamData.undergrad,
+      ...teamData.alumni,
+    ]
   }
 
-  const handleAddMember = (category: string) => {
+  // Find which category a member belongs to
+  const findMemberCategory = (memberId: string): string | null => {
+    if (!teamData) return null
+    const categories = ['faculty', 'phd', 'masters', 'undergrad', 'alumni'] as const
+    for (const cat of categories) {
+      if (teamData[cat].some(m => m.id === memberId)) {
+        return cat
+      }
+    }
+    return null
+  }
+
+  const handleAddMember = () => {
     const newMember: TeamMember = {
       id: String(Date.now()),
       name: '',
-      role: categories.find(c => c.key === category)?.label || '',
+      role: '',
       title: '',
       interests: [],
       bio: '',
       email: '',
     }
     setEditingMember(newMember)
-    setEditingCategory(category)
   }
 
-  const handleEditMember = (member: TeamMember, category: string) => {
+  const handleEditMember = (member: TeamMember) => {
     setEditingMember({ ...member })
-    setEditingCategory(category)
   }
 
-  const handleDeleteMember = async (memberId: string, category: string) => {
+  const handleDeleteMember = async (memberId: string) => {
     if (!teamData || !confirm('Are you sure you want to delete this team member?')) return
+
+    const category = findMemberCategory(memberId)
+    if (!category) return
 
     const updatedTeamData = {
       ...teamData,
-      [category]: (teamData[category as keyof TeamData] as TeamMember[]).filter(m => m.id !== memberId),
+      [category]: teamData[category as keyof TeamData].filter(m => m.id !== memberId),
     }
 
     setTeamData(updatedTeamData)
@@ -145,25 +133,31 @@ export default function TeamAdminPage() {
   }
 
   const handleSaveMember = async () => {
-    if (!teamData || !editingMember || !editingCategory) return
+    if (!teamData || !editingMember) return
 
-    const categoryMembers = [...(teamData[editingCategory as keyof TeamData] as TeamMember[])]
-    const existingIndex = categoryMembers.findIndex(m => m.id === editingMember.id)
+    // Check if this is an existing member or new
+    const existingCategory = findMemberCategory(editingMember.id)
+    
+    let updatedTeamData: TeamData
 
-    if (existingIndex >= 0) {
-      categoryMembers[existingIndex] = editingMember
+    if (existingCategory) {
+      // Update existing member
+      updatedTeamData = {
+        ...teamData,
+        [existingCategory]: teamData[existingCategory as keyof TeamData].map(m =>
+          m.id === editingMember.id ? editingMember : m
+        ),
+      }
     } else {
-      categoryMembers.push(editingMember)
-    }
-
-    const updatedTeamData = {
-      ...teamData,
-      [editingCategory]: categoryMembers,
+      // Add new member to 'phd' array (default storage)
+      updatedTeamData = {
+        ...teamData,
+        phd: [...teamData.phd, editingMember],
+      }
     }
 
     setTeamData(updatedTeamData)
     setEditingMember(null)
-    setEditingCategory('')
 
     // Auto-save to GitHub
     setIsSaving(true)
@@ -205,6 +199,8 @@ export default function TeamAdminPage() {
     )
   }
 
+  const allMembers = getAllMembers()
+
   return (
     <div className="container-custom py-16">
       <div className="flex items-center justify-between mb-8">
@@ -213,11 +209,11 @@ export default function TeamAdminPage() {
             Manage Team
           </h1>
           <p className="text-slate-600">
-            Add, edit, or remove team members
+            {allMembers.length} team member{allMembers.length !== 1 ? 's' : ''}
           </p>
         </div>
-        <Button onClick={handleSave} disabled={isSaving}>
-          {isSaving ? 'Saving...' : 'Save All Changes'}
+        <Button onClick={handleAddMember}>
+          Add Team Member
         </Button>
       </div>
 
@@ -234,7 +230,7 @@ export default function TeamAdminPage() {
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <Card padding="lg" className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <h2 className="font-display text-2xl font-bold text-slate-900 mb-6">
-              {editingMember.name ? 'Edit Team Member' : 'Add Team Member'}
+              {findMemberCategory(editingMember.id) ? 'Edit Team Member' : 'Add Team Member'}
             </h2>
             
             <div className="space-y-4">
@@ -249,22 +245,23 @@ export default function TeamAdminPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Title</label>
+                <label className="block text-sm font-medium text-slate-700 mb-2">Title/Role</label>
                 <input
                   type="text"
                   value={editingMember.title || ''}
                   onChange={(e) => setEditingMember({ ...editingMember, title: e.target.value })}
-                  placeholder="e.g., Assistant Professor"
+                  placeholder="e.g., PhD Student, Assistant Professor"
                   className="w-full px-4 py-3 rounded-xl border border-sage-200 focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-2">Email *</label>
+                <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
                 <input
-                  type="email"
+                  type="text"
                   value={editingMember.email}
                   onChange={(e) => setEditingMember({ ...editingMember, email: e.target.value })}
+                  placeholder="email[at]utexas.edu"
                   className="w-full px-4 py-3 rounded-xl border border-sage-200 focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
@@ -285,7 +282,7 @@ export default function TeamAdminPage() {
                 </label>
                 <input
                   type="text"
-                  value={editingMember.interests.join(', ')}
+                  value={editingMember.interests.filter(i => i !== 'filler text').join(', ')}
                   onChange={(e) => setEditingMember({
                     ...editingMember,
                     interests: e.target.value.split(',').map(s => s.trim()).filter(Boolean),
@@ -308,7 +305,6 @@ export default function TeamAdminPage() {
                         const file = e.target.files?.[0]
                         if (!file) return
                         
-                        // Check file size (max 2MB)
                         if (file.size > 2 * 1024 * 1024) {
                           alert('Image must be less than 2MB')
                           return
@@ -413,10 +409,10 @@ export default function TeamAdminPage() {
             </div>
 
             <div className="flex gap-4 mt-6">
-              <Button onClick={handleSaveMember}>
-                {editingMember.name ? 'Update Member' : 'Add Member'}
+              <Button onClick={handleSaveMember} disabled={isSaving}>
+                {isSaving ? 'Saving...' : (findMemberCategory(editingMember.id) ? 'Update Member' : 'Add Member')}
               </Button>
-              <Button variant="outline" onClick={() => { setEditingMember(null); setEditingCategory(''); }}>
+              <Button variant="outline" onClick={() => setEditingMember(null)}>
                 Cancel
               </Button>
             </div>
@@ -424,88 +420,77 @@ export default function TeamAdminPage() {
         </div>
       )}
 
-      {/* Team Categories */}
-      <div className="space-y-8">
-        {categories.map(({ key, label }) => {
-          const members = teamData[key as keyof TeamData] as TeamMember[]
-          return (
-            <Card key={key} padding="lg">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="font-display text-xl font-bold text-slate-900">
-                  {label} ({members.length})
-                </h2>
-                <Button size="sm" onClick={() => handleAddMember(key)}>
-                  Add {label.replace(/s$/, '')}
-                </Button>
-              </div>
-
-              {members.length === 0 ? (
-                <p className="text-slate-500 text-sm">No {label.toLowerCase()} yet</p>
-              ) : (
-                <div className="space-y-3">
-                  {members.map((member) => {
-                    const initials = member.name
-                      .split(' ')
-                      .map((n) => n[0])
-                      .join('')
-                      .toUpperCase()
-                    
-                    return (
-                      <div
-                        key={member.id}
-                        className="flex items-center justify-between p-4 bg-sage-50 rounded-xl"
-                      >
-                        <div className="flex items-center gap-4">
-                          {member.image ? (
-                            /* eslint-disable-next-line @next/next/no-img-element */
-                            <img
-                              src={member.image}
-                              alt={member.name}
-                              className="w-12 h-12 rounded-full object-cover"
-                              onError={(e) => {
-                                (e.target as HTMLImageElement).style.display = 'none'
-                                ;(e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden')
-                              }}
-                            />
-                          ) : null}
-                          <div className={`w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white text-sm font-bold ${member.image ? 'hidden' : ''}`}>
-                            {initials}
-                          </div>
-                          <div>
-                            <p className="font-medium text-slate-900">{member.name}</p>
-                            {member.title && member.title !== 'filler text' && (
-                              <p className="text-sm text-slate-600">{member.title}</p>
-                            )}
-                            <p className="text-sm text-slate-500">{member.email}</p>
-                          </div>
-                        </div>
-                        <div className="flex gap-2">
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            onClick={() => handleEditMember(member, key)}
-                          >
-                            Edit
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            onClick={() => handleDeleteMember(member.id, key)}
-                            className="text-red-600 hover:text-red-700 border-red-300 hover:border-red-400"
-                          >
-                            Delete
-                          </Button>
-                        </div>
-                      </div>
-                    )
-                  })}
+      {/* Team Members List */}
+      <Card padding="lg">
+        {allMembers.length === 0 ? (
+          <p className="text-slate-500 text-center py-8">No team members yet. Add your first one!</p>
+        ) : (
+          <div className="space-y-3">
+            {allMembers.map((member) => {
+              const initials = member.name
+                .split(' ')
+                .map((n) => n[0])
+                .join('')
+                .toUpperCase()
+              
+              const displayTitle = member.title && member.title !== 'filler text' ? member.title : ''
+              const displayEmail = member.email && member.email !== 'filler text' ? member.email : ''
+              
+              return (
+                <div
+                  key={member.id}
+                  className="flex items-center justify-between p-4 bg-sage-50 rounded-xl"
+                >
+                  <div className="flex items-center gap-4">
+                    {member.image ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-12 h-12 rounded-full object-cover"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = 'none'
+                          const next = (e.target as HTMLImageElement).nextElementSibling
+                          if (next) next.classList.remove('hidden')
+                        }}
+                      />
+                    ) : null}
+                    <div className={`w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white text-sm font-bold ${member.image ? 'hidden' : ''}`}>
+                      {initials}
+                    </div>
+                    <div>
+                      <p className="font-medium text-slate-900">{member.name}</p>
+                      {displayTitle && (
+                        <p className="text-sm text-slate-600">{displayTitle}</p>
+                      )}
+                      {displayEmail && (
+                        <p className="text-sm text-slate-500">{displayEmail}</p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => handleEditMember(member)}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => handleDeleteMember(member.id)}
+                      className="text-red-600 hover:text-red-700 border-red-300 hover:border-red-400"
+                    >
+                      Delete
+                    </Button>
+                  </div>
                 </div>
-              )}
-            </Card>
-          )
-        })}
-      </div>
+              )
+            })}
+          </div>
+        )}
+      </Card>
     </div>
   )
 }
-
