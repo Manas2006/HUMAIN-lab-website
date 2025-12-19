@@ -1,6 +1,17 @@
+'use client'
+
+import { useState } from 'react'
 import Card from '@/components/Card'
 
 export default function ContactPage() {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopyEmail = async () => {
+    await navigator.clipboard.writeText('leqi.liu.ll@gmail.com')
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
   return (
     <div className="container-custom py-16">
       <div className="max-w-3xl mx-auto mb-12 text-center">
@@ -38,12 +49,18 @@ export default function ContactPage() {
             </div>
             <div>
               <h3 className="font-semibold text-slate-900 mb-2">Email</h3>
-              <a
-                href="mailto:leqi.liu.ll@gmail.com"
-                className="text-primary hover:text-primary-dark text-lg"
+              <button
+                onClick={handleCopyEmail}
+                className="text-primary hover:text-primary-dark text-lg cursor-pointer flex items-center gap-2"
+                title="Click to copy"
               >
                 leqi.liu.ll[at]gmail.com
-              </a>
+                {copied ? (
+                  <span className="text-sm text-primary">(Copied!)</span>
+                ) : (
+                  <span className="text-sm text-slate-400">(Click to copy)</span>
+                )}
+              </button>
             </div>
             <div>
               <h3 className="font-semibold text-slate-900 mb-2">Location</h3>

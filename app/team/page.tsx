@@ -31,6 +31,7 @@ const allMembers: TeamMember[] = [
 
 function TeamMemberCard({ member }: { member: TeamMember }) {
   const [imageError, setImageError] = useState(false)
+  const [copied, setCopied] = useState(false)
   
   const initials = member.name
     .split(' ')
@@ -44,6 +45,15 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
   const bio = member.bio && member.bio !== 'filler text' ? member.bio : ''
   const title = member.title && member.title !== 'filler text' ? member.title : ''
   const interests = member.interests.filter(i => i !== 'filler text')
+  const hasValidEmail = member.email && member.email !== 'filler text'
+
+  const handleCopyEmail = async () => {
+    if (hasValidEmail) {
+      await navigator.clipboard.writeText(member.email)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    }
+  }
 
   return (
     <Card>
@@ -83,14 +93,14 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
           </div>
         )}
         <div className="flex justify-center gap-4 text-sm">
-          {member.email && member.email !== 'filler text' && (
-            <a
-              href={`mailto:${member.email}`}
-              className="text-primary hover:text-primary-dark"
-              aria-label={`Email ${member.name}`}
+          {hasValidEmail && (
+            <button
+              onClick={handleCopyEmail}
+              className="text-primary hover:text-primary-dark cursor-pointer"
+              title="Click to copy email"
             >
-              Email
-            </a>
+              {copied ? 'Copied!' : 'Email'}
+            </button>
           )}
           {member.links?.website && (
             <a

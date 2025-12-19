@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useState } from 'react'
 
 const footerLinks = {
   research: [
@@ -19,10 +20,17 @@ const footerLinks = {
 
 export default function Footer() {
   const pathname = usePathname()
+  const [copied, setCopied] = useState(false)
   
   // Don't show footer on admin pages
   if (pathname?.startsWith('/admin')) {
     return null
+  }
+
+  const handleCopyEmail = async () => {
+    await navigator.clipboard.writeText('leqi.liu.ll@gmail.com')
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   return (
@@ -35,15 +43,19 @@ export default function Footer() {
               HUMAIN Lab
             </h3>
             <p className="text-slate-600 mb-4 max-w-md">
-              Advancing Human-Centered Artificial Intelligence through ethical research
-              and innovative technology solutions.
+              Build controllable machine intelligence that serves humanity safely.
             </p>
             <div className="space-y-2 text-sm text-slate-600">
               <p>
                 <strong>Email:</strong>{' '}
-                <a href="mailto:contact@humainlab.edu" className="hover:text-primary">
-                  contact@humainlab.edu
-                </a>
+                <button 
+                  onClick={handleCopyEmail}
+                  className="hover:text-primary cursor-pointer"
+                  title="Click to copy"
+                >
+                  leqi.liu.ll[at]gmail.com
+                  {copied && <span className="ml-2 text-primary text-xs">(Copied!)</span>}
+                </button>
               </p>
             </div>
           </div>
